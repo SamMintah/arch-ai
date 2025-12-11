@@ -40,7 +40,7 @@ export default function Problem() {
             <span className="text-indigo-400">"I can architect"</span>.
           </h2>
           <p className="text-lg text-slate-400 mb-8 leading-relaxed">
-            Most engineers get stuck in the implementation details. Moving to senior levels requires a shift in thinking—from functions and classes to systems, scalability, and reliability.
+            Most engineers get stuck in the implementation details. Moving to senior levels requires a shift in thinking from functions and classes to systems, scalability, and reliability.
           </p>
 
           <div className="space-y-6">
