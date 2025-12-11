@@ -77,10 +77,4 @@ Then push the `dist` folder to your `gh-pages` branch or configure GitHub Pages 
 
 Private project - All rights reserved
 
-## 🔗 Links
-
-- [Product Strategy](./PRODUCT_STRATEGY.md) - Detailed product planning (private)
-
----
-
 Built with ❤️ for engineers who want to level up
