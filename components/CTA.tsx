@@ -1,16 +1,50 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Mail, Check } from 'lucide-react';
+import { ArrowRight, Sparkles, Mail, Check, Loader2 } from 'lucide-react';
 
 export default function CTA() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if(email) {
+    if(!email) return;
+    
+    setLoading(true);
+    setError('');
+
+    try {
+      const SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || '';
+      
+      if (!SCRIPT_URL) {
+        console.warn('Google Script URL not configured');
         setSubmitted(true);
-        // Here you would typically send the email to your backend
+        setLoading(false);
+        return;
+      }
+
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          timestamp: new Date().toISOString(),
+          source: 'cta-section'
+        })
+      });
+
+      setSubmitted(true);
+      setEmail('');
+    } catch (err) {
+      console.error('Error submitting email:', err);
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -42,17 +76,28 @@ export default function CTA() {
                                 placeholder="Enter your email address" 
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="w-full bg-slate-900/80 border border-slate-700 rounded-full py-4 pl-12 pr-6 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent backdrop-blur-sm transition-all"
+                                disabled={loading}
+                                className="w-full bg-slate-900/80 border border-slate-700 rounded-full py-4 pl-12 pr-6 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent backdrop-blur-sm transition-all disabled:opacity-50"
                                 required
                             />
                         </div>
                         <button 
                             type="submit"
-                            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold text-white bg-indigo-600 rounded-full overflow-hidden transition-transform hover:scale-105 hover:bg-indigo-500 focus:outline-none ring-offset-2 ring-indigo-500 whitespace-nowrap shadow-lg shadow-indigo-500/25"
+                            disabled={loading}
+                            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold text-white bg-indigo-600 rounded-full overflow-hidden transition-transform hover:scale-105 hover:bg-indigo-500 focus:outline-none ring-offset-2 ring-indigo-500 whitespace-nowrap shadow-lg shadow-indigo-500/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                         >
                             <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
-                            <span>Join Waitlist</span>
-                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                            {loading ? (
+                                <>
+                                    <Loader2 size={20} className="animate-spin" />
+                                    <span>Joining...</span>
+                                </>
+                            ) : (
+                                <>
+                                    <span>Join Waitlist</span>
+                                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                                </>
+                            )}
                         </button>
                     </form>
                 ) : (
@@ -67,6 +112,10 @@ export default function CTA() {
                         <h3 className="text-xl font-bold text-white mb-2">You're on the list!</h3>
                         <p className="text-slate-400">We'll notify you as soon as spots open up.</p>
                     </motion.div>
+                )}
+                
+                {error && (
+                    <p className="text-red-400 text-sm mt-4">{error}</p>
                 )}
                 
                 {!submitted && <p className="mt-6 text-slate-500 text-sm">Join 2,000+ engineers waiting for access.</p>}

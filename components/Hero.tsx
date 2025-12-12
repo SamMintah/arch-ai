@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, ChevronRight, Check, Loader2 } from 'lucide-react';
-import { HeroMock } from './ui/MockInterfaces';
 
 export default function Hero() {
   const [email, setEmail] = useState('');
@@ -94,7 +93,7 @@ export default function Hero() {
           </p>
 
           {!submitted ? (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-20 max-w-lg mx-auto w-full">
+            <form id="waitlist" onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-20 max-w-lg mx-auto w-full scroll-mt-24">
                 <input 
                     type="email" 
                     placeholder="Enter your email address" 
@@ -138,14 +137,23 @@ export default function Hero() {
           )}
         </motion.div>
 
-        {/* Hero Image / Mock UI */}
+        {/* Hero Image / Dashboard Preview */}
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative max-w-5xl mx-auto"
+          className="relative w-full max-w-5xl mx-auto mt-8"
         >
-            <HeroMock />
+            <div className="relative rounded-xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900">
+              <img 
+                src="https://res.cloudinary.com/kaytech2/image/upload/v1765497725/dashboard-preview_dwsmsx.png" 
+                alt="ARCH Dashboard Preview" 
+                className="w-full h-auto block object-cover"
+                loading="lazy"
+              />
+              {/* Optional: Add a subtle overlay for better text contrast */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 to-transparent pointer-events-none"></div>
+            </div>
             {/* Glow effect under the image */}
             <div className="absolute -inset-4 bg-gradient-to-t from-indigo-500/20 to-transparent blur-2xl -z-10 rounded-3xl opacity-50"></div>
         </motion.div>

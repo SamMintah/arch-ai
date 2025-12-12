@@ -61,10 +61,10 @@ export default function Navbar({ onSignIn }: NavbarProps) {
           <a href="#features" onClick={(e) => handleLinkClick(e, 'features')} className="text-sm font-medium text-slate-400 hover:text-white transition-colors">Features</a>
           <a href="#pricing" onClick={(e) => handleLinkClick(e, 'pricing')} className="text-sm font-medium text-slate-400 hover:text-white transition-colors">Pricing</a>
           <button 
-            onClick={onSignIn}
+            onClick={() => scrollToId('waitlist')}
             className="px-5 py-2.5 rounded-full bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium transition-all border border-slate-700"
           >
-            Sign In
+            Join Waitlist
           </button>
           <button 
             onClick={() => scrollToId('waitlist')}
@@ -99,13 +99,10 @@ export default function Navbar({ onSignIn }: NavbarProps) {
               <a href="#pricing" onClick={(e) => handleLinkClick(e, 'pricing')} className="text-base font-medium text-slate-400 hover:text-white">Pricing</a>
               <div className="h-px bg-slate-800 my-2"></div>
               <button 
-                onClick={() => {
-                    setMobileMenuOpen(false);
-                    if (onSignIn) onSignIn();
-                }}
+                onClick={() => scrollToId('waitlist')}
                 className="w-full py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-medium"
               >
-                Sign In
+                Join Waitlist
               </button>
               <button 
                 onClick={() => scrollToId('waitlist')}

@@ -13,7 +13,7 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "$29",
+    price: "$15",
     period: "/month",
     desc: "For serious engineers growing their career.",
     features: ["Unlimited projects", "Advanced trade-off analysis", "Export to PDF & Markdown", "Priority generation speed", "Diagram editing"],
