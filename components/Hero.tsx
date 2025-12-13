@@ -10,15 +10,15 @@ export default function Hero() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if(!email) return;
-    
+    if (!email) return;
+
     setLoading(true);
     setError('');
 
     try {
       // Replace with your Google Apps Script Web App URL
       const SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || '';
-      
+
       if (!SCRIPT_URL) {
         console.warn('Google Script URL not configured');
         // For demo purposes, still show success
@@ -81,33 +81,32 @@ export default function Hero() {
             <ChevronRight size={12} className="text-slate-400" />
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6">
-            Think like a senior engineer.<br />
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
+            System design confidence<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
-              Build with confidence.
+              for working engineers.
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            ARCH guides you through system thinking, architecture tradeoffs, and design decisions for any project you want to build,transforming you from a coder into an engineer.
+          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+            Stop guessing. Start architecting. <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">ARCH</span> guides you through system thinking, architecture tradeoffs, and design decisions using your own project ideas.
           </p>
-
           {!submitted ? (
             <form id="waitlist" onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-20 max-w-lg mx-auto w-full scroll-mt-24">
-                <input 
-                    type="email" 
-                    placeholder="Enter your email address" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    disabled={loading}
-                    className="w-full sm:w-auto flex-1 px-6 py-4 rounded-full bg-slate-800/50 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 backdrop-blur-sm transition-all disabled:opacity-50"
-                    required
-                />
-                <button 
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={loading}
+                className="w-full sm:w-auto flex-1 px-6 py-4 rounded-full bg-slate-800/50 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 backdrop-blur-sm transition-all disabled:opacity-50"
+                required
+              />
+              <button
                 type="submit"
                 disabled={loading}
                 className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-slate-900 font-bold hover:bg-slate-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
-                >
+              >
                 {loading ? (
                   <>
                     <Loader2 size={18} className="animate-spin" />
@@ -119,16 +118,16 @@ export default function Hero() {
                     <ArrowRight size={18} />
                   </>
                 )}
-                </button>
+              </button>
             </form>
           ) : (
-            <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="flex items-center justify-center gap-2 mb-20 text-green-400 bg-green-500/10 px-8 py-4 rounded-full border border-green-500/20 w-fit mx-auto"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="flex items-center justify-center gap-2 mb-20 text-green-400 bg-green-500/10 px-8 py-4 rounded-full border border-green-500/20 w-fit mx-auto"
             >
-                <Check size={20} />
-                <span className="font-semibold">You've been added to the waitlist!</span>
+              <Check size={20} />
+              <span className="font-semibold">You've been added to the waitlist!</span>
             </motion.div>
           )}
 
@@ -144,18 +143,20 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative w-full max-w-5xl mx-auto mt-8"
         >
-            <div className="relative rounded-xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900">
-              <img 
-                src="https://res.cloudinary.com/kaytech2/image/upload/v1765497725/dashboard-preview_dwsmsx.png" 
-                alt="ARCH Dashboard Preview" 
-                className="w-full h-auto block object-cover"
-                loading="lazy"
-              />
-              {/* Optional: Add a subtle overlay for better text contrast */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 to-transparent pointer-events-none"></div>
-            </div>
-            {/* Glow effect under the image */}
-            <div className="absolute -inset-4 bg-gradient-to-t from-indigo-500/20 to-transparent blur-2xl -z-10 rounded-3xl opacity-50"></div>
+          {/* Multiple glow layers for depth (like OpenMemory) */}
+          <div className="absolute -inset-x-20 -inset-y-10 bg-gradient-to-r from-indigo-500/30 via-purple-500/30 to-indigo-500/30 blur-3xl -z-10 opacity-60"></div>
+          <div className="absolute -inset-x-10 -bottom-20 h-40 bg-gradient-to-t from-indigo-600/40 via-purple-600/20 to-transparent blur-2xl -z-10"></div>
+          
+          <div className="relative rounded-xl overflow-hidden border border-slate-800/50 shadow-[0_0_80px_rgba(99,102,241,0.3)] bg-slate-900">
+            <img
+              src="https://res.cloudinary.com/kaytech2/image/upload/v1765497725/dashboard-preview_dwsmsx.png"
+              alt="ARCH Dashboard Preview"
+              className="w-full h-auto block object-cover"
+              loading="lazy"
+            />
+            {/* Subtle overlay for depth */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 to-transparent pointer-events-none"></div>
+          </div>
         </motion.div>
       </div>
     </section>
