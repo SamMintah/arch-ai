@@ -89,7 +89,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            ARCH guides you through system design, tradeoffs, and architecture so you can step into real engineering, not just code.
+            ARCH guides you through system thinking, architecture tradeoffs, and design decisions for any project you want to build,transforming you from a coder into an engineer.
           </p>
 
           {!submitted ? (

@@ -51,7 +51,7 @@ export default function Navbar({ onSignIn }: NavbarProps) {
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white">
             <Cpu size={20} />
           </div>
-          <span className="font-bold text-xl tracking-tight text-white">ARCH</span>
+          <span className="font-bold text-xl tracking-tight text-white">arch</span>
         </div>
 
         {/* Desktop Links */}
