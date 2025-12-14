@@ -74,7 +74,7 @@ const Card = ({ i, title, desc, icon, mock, colorClass, glowClass, progress, ran
     const scale = useTransform(progress, range, [1, targetScale]);
 
     return (
-        <div ref={container} className="h-[70vh] md:h-[75vh] lg:h-[90vh] flex items-center justify-center sticky top-0 px-4 md:px-6">
+        <div ref={container} className="mb-8 md:mb-0 md:h-[75vh] lg:h-[90vh] flex items-center justify-center md:sticky md:top-0 px-4 md:px-6">
             <motion.div 
                 style={{ 
                     scale,

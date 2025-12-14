@@ -207,56 +207,56 @@ export const ChatMock = () => (
   <MockWindow title="ARCH Interview Interface">
     <div className="flex h-full font-sans">
       {/* Main Content Area */}
-      <div className="flex-1 p-6 md:p-8 flex flex-col items-center justify-center relative bg-[#0B0F19]">
+      <div className="flex-1 p-3 md:p-8 flex flex-col items-center justify-center relative bg-[#0B0F19]">
          {/* Question Container */}
          <div className="w-full max-w-2xl relative z-10">
              
              {/* Header Badge */}
-             <div className="flex items-center justify-between mb-8">
-                <span className="bg-slate-800/80 backdrop-blur text-indigo-400 text-[10px] md:text-xs px-3 py-1 rounded-full font-medium border border-slate-700 shadow-sm">
+             <div className="flex items-center justify-between mb-4 md:mb-8">
+                <span className="bg-slate-800/80 backdrop-blur text-indigo-400 text-[9px] md:text-xs px-2 md:px-3 py-1 rounded-full font-medium border border-slate-700 shadow-sm">
                    Question 3 of 4
                 </span>
-                <span className="text-[10px] md:text-xs font-bold text-slate-500 tracking-widest uppercase">
+                <span className="text-[9px] md:text-xs font-bold text-slate-500 tracking-widest uppercase">
                    Payment Security
                 </span>
              </div>
              
              {/* Main Question */}
-             <h3 className="text-xl md:text-3xl font-bold text-white mb-6 leading-tight">
+             <h3 className="text-base md:text-3xl font-bold text-white mb-3 md:mb-6 leading-tight">
                How should we handle payment processing failures during a ride completion?
              </h3>
              
              {/* Hint/Context */}
-             <div className="flex gap-3 mb-8 pl-1">
+             <div className="flex gap-2 md:gap-3 mb-4 md:mb-8 pl-1">
                 <div className="w-0.5 bg-indigo-500 rounded-full h-full min-h-[1.5em]"></div>
-                <p className="text-slate-400 text-sm italic">
+                <p className="text-slate-400 text-[10px] md:text-sm italic">
                    Consider idempotency keys and eventual consistency reconciliation loops.
                 </p>
              </div>
 
              {/* Input Area */}
              <div className="bg-slate-900 border border-slate-700 rounded-xl p-1 shadow-2xl relative group focus-within:ring-1 focus-within:ring-indigo-500/50 transition-all">
-                 <div className="p-4 min-h-[120px]">
-                    <p className="text-slate-200 text-sm leading-relaxed font-mono">
+                 <div className="p-2 md:p-4 min-h-[80px] md:min-h-[120px]">
+                    <p className="text-slate-200 text-[10px] md:text-sm leading-relaxed font-mono">
                         We must implement idempotency keys for all payment transactions. If a failure occurs, the system should retry with exponential backoff and flag for manual review if it fails 3 times.
-                        <span className="animate-pulse inline-block w-2 h-4 bg-indigo-500 align-middle ml-1"></span>
+                        <span className="animate-pulse inline-block w-1.5 h-3 md:w-2 md:h-4 bg-indigo-500 align-middle ml-1"></span>
                     </p>
                  </div>
                  
                  {/* Input Actions */}
-                 <div className="flex justify-between items-center p-2 bg-slate-950/30 rounded-b-lg border-t border-slate-800">
+                 <div className="flex justify-between items-center p-1.5 md:p-2 bg-slate-950/30 rounded-b-lg border-t border-slate-800">
                     <div className="flex gap-2">
-                       <button className="p-2 hover:bg-slate-800 rounded-lg text-slate-500 transition-colors">
-                          <Mic size={14} />
+                       <button className="p-1.5 md:p-2 hover:bg-slate-800 rounded-lg text-slate-500 transition-colors">
+                          <Mic size={12} className="md:w-3.5 md:h-3.5" />
                        </button>
                     </div>
-                    <div className="flex items-center gap-3">
-                        <button className="text-xs text-slate-500 hover:text-white transition-colors font-medium">
+                    <div className="flex items-center gap-2 md:gap-3">
+                        <button className="text-[10px] md:text-xs text-slate-500 hover:text-white transition-colors font-medium">
                             Back
                         </button>
-                        <button className="bg-green-600 hover:bg-green-500 text-white text-xs font-bold px-3 py-1.5 md:px-4 md:py-2 rounded-lg flex items-center gap-2 transition-all shadow-lg shadow-green-500/10">
+                        <button className="bg-green-600 hover:bg-green-500 text-white text-[10px] md:text-xs font-bold px-2 py-1 md:px-4 md:py-2 rounded-lg flex items-center gap-1 md:gap-2 transition-all shadow-lg shadow-green-500/10">
                            Confirm & Next 
-                           <ArrowRight size={14} />
+                           <ArrowRight size={10} className="md:w-3.5 md:h-3.5" />
                         </button>
                     </div>
                  </div>
@@ -268,7 +268,7 @@ export const ChatMock = () => (
       </div>
       
       {/* Right Sidebar - Topic Coverage */}
-      <div className="w-64 bg-[#080c14] border-l border-slate-800 p-6 hidden md:block">
+      <div className="w-64 bg-[#080c14] border-l border-slate-800 p-6 hidden lg:block">
          <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-6">Topic Coverage</h4>
          <div className="space-y-6 relative">
              {/* Timeline Line */}
@@ -464,7 +464,7 @@ export const ArchMock = () => (
          <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,#4f46e5_1px,transparent_1px),linear-gradient(to_bottom,#4f46e5_1px,transparent_1px)] bg-[size:24px_24px]"></div>
          
          {/* Nodes Container */}
-         <div className="relative w-full max-w-2xl h-[400px] scale-[0.65] md:scale-100 origin-center">
+         <div className="relative w-full max-w-2xl h-[400px] scale-90 md:scale-100 origin-center">
             {/* SVG Lines */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none">
                 <defs>
@@ -567,7 +567,7 @@ export const DiagramMock = () => (
          <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,#4f46e5_1px,transparent_1px),linear-gradient(to_bottom,#4f46e5_1px,transparent_1px)] bg-[size:24px_24px]"></div>
 
          {/* Diagram Content */}
-         <div className="relative w-full max-w-2xl h-[400px] scale-[0.65] md:scale-100 origin-center">
+         <div className="relative w-full max-w-2xl h-[400px] scale-90 md:scale-100 origin-center">
             {/* SVG Lines */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none">
                 <defs>
@@ -660,32 +660,32 @@ export const DiagramMock = () => (
       {/* Right Details Panel */}
       <div className="w-full md:w-[320px] bg-[#0B0F19] border-l-0 md:border-l border-slate-800 flex flex-col h-[40%] md:h-full">
         {/* Header */}
-        <div className="p-4 border-b border-slate-800 flex items-start justify-between bg-[#0B0F19]">
-            <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-green-900/30 border border-green-500/30 flex items-center justify-center">
-                    <Database size={20} className="text-green-500" />
+        <div className="p-3 md:p-4 border-b border-slate-800 flex items-start justify-between bg-[#0B0F19]">
+            <div className="flex items-center gap-2 md:gap-3">
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-green-900/30 border border-green-500/30 flex items-center justify-center">
+                    <Database size={16} className="text-green-500 md:w-5 md:h-5" />
                 </div>
                 <div>
-                    <h3 className="text-sm font-bold text-white">Postgres DB</h3>
-                    <p className="text-[10px] text-slate-500 font-bold tracking-wider">DATABASE</p>
+                    <h3 className="text-xs md:text-sm font-bold text-white">Postgres DB</h3>
+                    <p className="text-[9px] md:text-[10px] text-slate-500 font-bold tracking-wider">DATABASE</p>
                 </div>
             </div>
-            <button className="text-slate-500 hover:text-white"><X size={16} /></button>
+            <button className="text-slate-500 hover:text-white"><X size={14} className="md:w-4 md:h-4" /></button>
         </div>
 
         {/* Scrollable Content */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-6">
+        <div className="flex-1 overflow-y-auto p-3 md:p-4 space-y-4 md:space-y-6">
             
             {/* Role */}
             <div>
-                <div className="flex items-center gap-2 mb-2">
-                   <div className="w-3 h-3 rounded-full border border-slate-600 flex items-center justify-center">
-                      <span className="text-[8px] text-slate-400">i</span>
+                <div className="flex items-center gap-2 mb-1.5 md:mb-2">
+                   <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full border border-slate-600 flex items-center justify-center">
+                      <span className="text-[7px] md:text-[8px] text-slate-400">i</span>
                    </div>
-                   <span className="text-[10px] font-bold text-slate-500 tracking-wider">ROLE & RESPONSIBILITY</span>
+                   <span className="text-[9px] md:text-[10px] font-bold text-slate-500 tracking-wider">ROLE & RESPONSIBILITY</span>
                 </div>
-                <div className="bg-slate-900 border border-slate-800 rounded-lg p-3">
-                    <p className="text-xs text-slate-300 leading-relaxed">
+                <div className="bg-slate-900 border border-slate-800 rounded-lg p-2 md:p-3">
+                    <p className="text-[10px] md:text-xs text-slate-300 leading-relaxed">
                         Primary source of truth for durable, relational data.
                     </p>
                 </div>
@@ -693,14 +693,14 @@ export const DiagramMock = () => (
 
             {/* Decision */}
             <div>
-                <div className="flex items-center gap-2 mb-2">
-                   <div className="w-3 h-3 text-yellow-500">
-                      <Lightbulb size={12} />
+                <div className="flex items-center gap-2 mb-1.5 md:mb-2">
+                   <div className="w-2.5 h-2.5 md:w-3 md:h-3 text-yellow-500">
+                      <Lightbulb size={10} className="md:w-3 md:h-3" />
                    </div>
-                   <span className="text-[10px] font-bold text-slate-500 tracking-wider">ARCHITECTURAL DECISION</span>
+                   <span className="text-[9px] md:text-[10px] font-bold text-slate-500 tracking-wider">ARCHITECTURAL DECISION</span>
                 </div>
-                <div className="bg-slate-900 border border-slate-800 rounded-lg p-3">
-                    <p className="text-xs text-slate-300 leading-relaxed">
+                <div className="bg-slate-900 border border-slate-800 rounded-lg p-2 md:p-3">
+                    <p className="text-[10px] md:text-xs text-slate-300 leading-relaxed">
                         ACID compliance is strictly required for financial transactions (Payments) and user identities to prevent data corruption or lost rides.
                     </p>
                 </div>
@@ -708,58 +708,58 @@ export const DiagramMock = () => (
 
              {/* Stack */}
             <div>
-                <div className="flex items-center gap-2 mb-2">
-                   <div className="w-3 h-3 text-indigo-500">
-                      <Code size={12} />
+                <div className="flex items-center gap-2 mb-1.5 md:mb-2">
+                   <div className="w-2.5 h-2.5 md:w-3 md:h-3 text-indigo-500">
+                      <Code size={10} className="md:w-3 md:h-3" />
                    </div>
-                   <span className="text-[10px] font-bold text-slate-500 tracking-wider">SUGGESTED TECH STACK</span>
+                   <span className="text-[9px] md:text-[10px] font-bold text-slate-500 tracking-wider">SUGGESTED TECH STACK</span>
                 </div>
-                <span className="inline-block bg-slate-800 text-indigo-300 border border-slate-700 rounded px-2 py-1 text-xs font-mono">PostgreSQL 15</span>
+                <span className="inline-block bg-slate-800 text-indigo-300 border border-slate-700 rounded px-2 py-1 text-[10px] md:text-xs font-mono">PostgreSQL 15</span>
             </div>
 
             {/* Schema */}
              <div>
-                <div className="flex items-center gap-2 mb-2">
-                   <Database size={12} className="text-slate-500" />
-                   <span className="text-[10px] font-bold text-slate-500 tracking-wider">SCHEMA</span>
+                <div className="flex items-center gap-2 mb-1.5 md:mb-2">
+                   <Database size={10} className="text-slate-500 md:w-3 md:h-3" />
+                   <span className="text-[9px] md:text-[10px] font-bold text-slate-500 tracking-wider">SCHEMA</span>
                 </div>
-                <div className="bg-slate-900 border border-slate-800 rounded-lg p-3 space-y-3">
+                <div className="bg-slate-900 border border-slate-800 rounded-lg p-2 md:p-3 space-y-2 md:space-y-3">
                     {/* Users Table */}
                     <div>
-                        <div className="flex items-center gap-2 text-xs text-slate-200 mb-1.5 font-medium">
-                            <Layers size={10} className="text-slate-500" /> users
+                        <div className="flex items-center gap-1.5 md:gap-2 text-[10px] md:text-xs text-slate-200 mb-1 md:mb-1.5 font-medium">
+                            <Layers size={8} className="text-slate-500 md:w-2.5 md:h-2.5" /> users
                         </div>
                         <div className="flex flex-wrap gap-1">
-                            <span className="bg-slate-800 text-slate-400 border border-slate-700 px-1.5 py-0.5 rounded-[4px] text-[10px] font-mono">id (UUID)</span>
-                            <span className="bg-slate-800 text-slate-400 border border-slate-700 px-1.5 py-0.5 rounded-[4px] text-[10px] font-mono">email (VARCHAR)</span>
-                            <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1.5 py-0.5 rounded-[4px] text-[10px] font-mono">phone</span>
-                            <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1.5 py-0.5 rounded-[4px] text-[10px] font-mono">created_at</span>
+                            <span className="bg-slate-800 text-slate-400 border border-slate-700 px-1 md:px-1.5 py-0.5 rounded-[4px] text-[8px] md:text-[10px] font-mono">id (UUID)</span>
+                            <span className="bg-slate-800 text-slate-400 border border-slate-700 px-1 md:px-1.5 py-0.5 rounded-[4px] text-[8px] md:text-[10px] font-mono">email (VARCHAR)</span>
+                            <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1 md:px-1.5 py-0.5 rounded-[4px] text-[8px] md:text-[10px] font-mono">phone</span>
+                            <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1 md:px-1.5 py-0.5 rounded-[4px] text-[8px] md:text-[10px] font-mono">created_at</span>
                         </div>
                     </div>
                     {/* Trips Table */}
                     <div>
-                        <div className="flex items-center gap-2 text-xs text-slate-200 mb-1.5 font-medium">
-                             <Layers size={10} className="text-slate-500" /> trips
+                        <div className="flex items-center gap-1.5 md:gap-2 text-[10px] md:text-xs text-slate-200 mb-1 md:mb-1.5 font-medium">
+                             <Layers size={8} className="text-slate-500 md:w-2.5 md:h-2.5" /> trips
                         </div>
                         <div className="flex flex-wrap gap-1">
-                            <span className="bg-slate-800 text-slate-400 border border-slate-700 px-1.5 py-0.5 rounded-[4px] text-[10px] font-mono">id (UUID)</span>
-                            <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1.5 py-0.5 rounded-[4px] text-[10px] font-mono">rider_id (FK)</span>
-                            <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1.5 py-0.5 rounded-[4px] text-[10px] font-mono">driver_id (FK)</span>
-                            <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1.5 py-0.5 rounded-[4px] text-[10px] font-mono">status</span>
-                             <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1.5 py-0.5 rounded-[4px] text-[10px] font-mono">fare_amount</span>
+                            <span className="bg-slate-800 text-slate-400 border border-slate-700 px-1 md:px-1.5 py-0.5 rounded-[4px] text-[8px] md:text-[10px] font-mono">id (UUID)</span>
+                            <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1 md:px-1.5 py-0.5 rounded-[4px] text-[8px] md:text-[10px] font-mono">rider_id (FK)</span>
+                            <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1 md:px-1.5 py-0.5 rounded-[4px] text-[8px] md:text-[10px] font-mono">driver_id (FK)</span>
+                            <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1 md:px-1.5 py-0.5 rounded-[4px] text-[8px] md:text-[10px] font-mono">status</span>
+                             <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1 md:px-1.5 py-0.5 rounded-[4px] text-[8px] md:text-[10px] font-mono">fare_amount</span>
                         </div>
                     </div>
                      {/* Payments Table */}
                     <div>
-                        <div className="flex items-center gap-2 text-xs text-slate-200 mb-1.5 font-medium">
-                             <Layers size={10} className="text-slate-500" /> payments
+                        <div className="flex items-center gap-1.5 md:gap-2 text-[10px] md:text-xs text-slate-200 mb-1 md:mb-1.5 font-medium">
+                             <Layers size={8} className="text-slate-500 md:w-2.5 md:h-2.5" /> payments
                         </div>
                         <div className="flex flex-wrap gap-1">
-                            <span className="bg-slate-800 text-slate-400 border border-slate-700 px-1.5 py-0.5 rounded-[4px] text-[10px] font-mono">id</span>
-                            <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1.5 py-0.5 rounded-[4px] text-[10px] font-mono">trip_id</span>
-                            <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1.5 py-0.5 rounded-[4px] text-[10px] font-mono">amount</span>
-                             <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1.5 py-0.5 rounded-[4px] text-[10px] font-mono">currency</span>
-                             <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1.5 py-0.5 rounded-[4px] text-[10px] font-mono">status</span>
+                            <span className="bg-slate-800 text-slate-400 border border-slate-700 px-1 md:px-1.5 py-0.5 rounded-[4px] text-[8px] md:text-[10px] font-mono">id</span>
+                            <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1 md:px-1.5 py-0.5 rounded-[4px] text-[8px] md:text-[10px] font-mono">trip_id</span>
+                            <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1 md:px-1.5 py-0.5 rounded-[4px] text-[8px] md:text-[10px] font-mono">amount</span>
+                             <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1 md:px-1.5 py-0.5 rounded-[4px] text-[8px] md:text-[10px] font-mono">currency</span>
+                             <span className="bg-slate-800 text-slate-500 border border-slate-800 px-1 md:px-1.5 py-0.5 rounded-[4px] text-[8px] md:text-[10px] font-mono">status</span>
                         </div>
                     </div>
                 </div>
