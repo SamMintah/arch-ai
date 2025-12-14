@@ -25,11 +25,13 @@ export default function Problem() {
     <section id="problem" className="py-24 bg-surface relative overflow-hidden scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
         
+        {/* Text on the right (but first on mobile) */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="lg:order-2"
         >
           <div className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-red-400 uppercase bg-red-500/10 rounded-full">
             The Problem
@@ -58,12 +60,13 @@ export default function Problem() {
           </div>
         </motion.div>
 
+        {/* Visual on the left (but second on mobile) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative"
+          transition={{ duration: 0.6 }}
+          className="relative lg:order-1"
         >
           {/* Abstract Messy Architecture Visual */}
           <div className="aspect-square relative bg-slate-950 rounded-2xl border border-slate-800 p-8 flex items-center justify-center overflow-hidden">

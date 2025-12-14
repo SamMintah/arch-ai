@@ -1,119 +1,148 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { MessageSquare, FileText, Layers, GitMerge, ListTodo } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { MessageSquare, FileText, Layers, ListTodo, MousePointer2 } from 'lucide-react';
 import { ChatMock, PRDMock, ArchMock, DiagramMock, SprintMock } from './ui/MockInterfaces';
 
 const steps = [
   {
     id: 1,
     title: "The Interviewer",
-    desc: "ARCH asks clarifying questions to force product thinking and uncover edge cases before you write a single line of code.",
+    desc: "Before drawing boxes,ARCH asks the right questions to clarify your vision and uncover edge cases before you write a single line of code.",
     icon: <MessageSquare size={20} />,
-    mock: <ChatMock />
+    mock: <ChatMock />,
+    colorClass: "text-indigo-400",
+    glowClass: "bg-indigo-500/20"
   },
   {
     id: 2,
     title: "PRD Builder",
-    desc: "Generate comprehensive Product Requirement Documents. ARCH explains each section, ensuring you don't miss functional or non-functional requirements.",
+    desc: "Get a production-ready PRD in minutes, not days. ARCH explains each section so you understand what you're building and why it matters.",
     icon: <FileText size={20} />,
-    mock: <PRDMock />
+    mock: <PRDMock />,
+    colorClass: "text-purple-400",
+    glowClass: "bg-purple-500/20"
   },
   {
     id: 3,
     title: "Architecture Workshop",
-    desc: "Explore different approaches. ARCH presents three architecture options with detailed pros, cons, and complexity estimates.",
+    desc: "Compare monolith, serverless, and microservices side-by-side with real cost estimates, complexity ratings, and timeline projections. Make informed decisions.",
     icon: <Layers size={20} />,
-    mock: <ArchMock />
+    mock: <ArchMock />,
+    colorClass: "text-blue-400",
+    glowClass: "bg-blue-500/20"
   },
   {
     id: 4,
-    title: "System Design Diagrams",
-    desc: "Visualize your system. ARCH generates high-level architecture diagrams, data flow charts, and database schemas automatically.",
-    icon: <GitMerge size={20} />,
-    mock: <DiagramMock />
+    title: "Interactive Diagrams",
+    desc: "Click any component to see why PostgreSQL beats MongoDB for YOUR use case. Watch data flow in real-time. Every component is a mini-lesson.",
+    icon: <MousePointer2 size={20} />,
+    mock: <DiagramMock />,
+    colorClass: "text-green-400",
+    glowClass: "bg-green-500/20"
   },
   {
     id: 5,
     title: "Sprint Breakdown",
-    desc: "Turn your design into a plan. ARCH breaks the project into learning-focused sprints with specific tasks and resources.",
+    desc: "Get a step-by-step implementation plan with learning-focused tasks. Know exactly what to build, why it matters, and what you'll learn from each sprint.",
     icon: <ListTodo size={20} />,
-    mock: <SprintMock />
+    mock: <SprintMock />,
+    colorClass: "text-pink-400",
+    glowClass: "bg-pink-500/20"
   }
 ];
 
-export default function HowItWorks() {
-  return (
-    <section id="how-it-works" className="py-24 relative scroll-mt-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Guided by Intelligence</h2>
-             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-               A structured workflow designed to mimic a senior engineer mentoring session.
-             </p>
-          </motion.div>
-        </div>
+interface CardProps {
+    i: number;
+    title: string;
+    desc: string;
+    icon: React.ReactNode;
+    mock: React.ReactNode;
+    colorClass: string;
+    glowClass: string;
+    progress: any;
+    range: number[];
+    targetScale: number;
+}
 
-        <div className="relative">
-          {/* Vertical connection line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-indigo-900 to-transparent hidden lg:block -translate-x-1/2"></div>
+const Card = ({ i, title, desc, icon, mock, colorClass, glowClass, progress, range, targetScale }: CardProps) => {
+    const container = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: container,
+        offset: ['start end', 'start start']
+    });
 
-          <div className="space-y-32">
-            {steps.map((step, index) => (
-              <div key={step.id} className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-24 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-                
-                {/* Text Side */}
-                <motion.div 
-                  className="flex-1 lg:text-right"
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6 }}
-                  style={{ textAlign: index % 2 === 1 ? 'left' : (window.innerWidth >= 1024 ? 'right' : 'left') as any }}
-                >
-                  <div className={`flex items-center gap-3 mb-4 ${index % 2 === 1 ? 'lg:justify-start' : 'lg:justify-end'} justify-start`}>
-                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 font-bold border border-indigo-500/50">
-                      {step.id}
-                    </span>
-                    <span className="text-indigo-400 font-medium tracking-wide text-sm uppercase">Step {step.id}</span>
-                  </div>
-                  
-                  <h3 className="text-3xl font-bold text-white mb-4">{step.title}</h3>
-                  <p className="text-slate-400 text-lg leading-relaxed mb-6">
-                    {step.desc}
-                  </p>
-                  
-                  <div className={`flex ${index % 2 === 1 ? 'lg:justify-start' : 'lg:justify-end'} justify-start`}>
-                     <div className="p-3 bg-slate-800 rounded-lg text-white inline-flex">
-                        {step.icon}
+    const scale = useTransform(progress, range, [1, targetScale]);
+
+    return (
+        <div ref={container} className="h-[70vh] md:h-[75vh] lg:h-[90vh] flex items-center justify-center sticky top-0 px-4 md:px-6">
+            <motion.div 
+                style={{ 
+                    scale,
+                    top: `calc(-5% + ${i * 25}px)` 
+                }}
+                className="flex flex-col relative h-[500px] sm:h-[550px] md:h-[650px] w-full max-w-6xl rounded-2xl md:rounded-3xl bg-[#0B0F19] border border-slate-800 p-4 sm:p-5 md:p-10 origin-top shadow-2xl overflow-hidden"
+            >
+                {/* Header Section inside Card */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6 mb-6 md:mb-8 relative z-10">
+                     <div className="flex items-start gap-4 max-w-2xl">
+                        <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center ${colorClass} shrink-0 shadow-lg`}>
+                            {icon}
+                        </div>
+                        <div>
+                             <h3 className="text-xl md:text-3xl font-bold text-white mb-2">{title}</h3>
+                             <p className="text-slate-400 text-xs md:text-base leading-relaxed line-clamp-3 md:line-clamp-none">{desc}</p>
+                        </div>
                      </div>
-                  </div>
-                </motion.div>
+                     <div className="text-6xl md:text-8xl font-bold text-slate-800/20 absolute right-0 top-0 -z-10 pointer-events-none select-none">
+                         0{i + 1}
+                     </div>
+                </div>
 
-                {/* Visual Side */}
-                <motion.div 
-                  className="flex-1 w-full"
-                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                  <div className="relative group perspective-1000">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                    {step.mock}
-                  </div>
-                </motion.div>
-
-              </div>
-            ))}
-          </div>
+                {/* Content Area */}
+                <div className="flex-1 rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 relative group">
+                    <div className={`absolute -inset-1 ${glowClass} opacity-10 group-hover:opacity-20 transition-opacity duration-700 blur-2xl`}></div>
+                    <div className="relative h-full w-full">
+                        {mock}
+                    </div>
+                </div>
+            </motion.div>
         </div>
+    )
+}
 
-      </div>
-    </section>
-  );
+export default function HowItWorks() {
+    const container = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: container,
+        offset: ['start start', 'end end']
+    });
+
+    return (
+        <section id="how-it-works" className="bg-[#030712] relative pt-20">
+             <div className="max-w-7xl mx-auto px-6 mb-8 md:mb-14 lg:mb-20 text-center">
+                 <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                 >
+                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-6">
+                        The ARCH Workflow
+                     </div>
+                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
+                       Guided by Intelligence
+                     </h2>
+                     <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+               A structured workflow designed to mimic a senior engineer mentoring session.
+                     </p>
+                 </motion.div>
+             </div>
+             
+             <div ref={container} className="relative pb-24">
+                {steps.map((step, i) => {
+                    const targetScale = 1 - ((steps.length - 1 - i) * 0.05);
+                    return <Card key={i} i={i} {...step} progress={scrollYProgress} range={[i * (1/steps.length), 1]} targetScale={targetScale} />
+                })}
+             </div>
+        </section>
+    )
 }

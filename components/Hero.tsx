@@ -69,43 +69,46 @@ export default function Hero() {
         <div className="absolute top-[20%] right-[20%] w-72 h-72 bg-purple-500/10 rounded-full blur-[100px] animate-blob animation-delay-2000"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 text-center z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700/50 mb-8 backdrop-blur-sm">
-            <span className="flex h-2 w-2 rounded-full bg-indigo-400 animate-pulse"></span>
-            <span className="text-xs font-medium text-indigo-200">Coming Soon: Early Access Beta</span>
-            <ChevronRight size={12} className="text-slate-400" />
-          </div>
+      <div className="max-w-7xl mx-auto px-6 z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left Column - Text Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-left"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/30 mb-8 backdrop-blur-sm">
+              <span className="flex h-2 w-2 rounded-full bg-orange-400 animate-pulse"></span>
+              <span className="text-xs font-medium text-orange-200">Limited Beta: First 100 engineers get lifetime access</span>
+            </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
-            System design confidence<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
-              for working engineers.
-            </span>
-          </h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
+              Think like a senior engineer,<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
+                before you write code.
+              </span>
+            </h1>
 
-          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-            Stop guessing. Start architecting. <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">ARCH</span> guides you through system thinking, architecture tradeoffs, and design decisions using your own project ideas.
-          </p>
-          {!submitted ? (
-            <form id="waitlist" onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-20 max-w-lg mx-auto w-full scroll-mt-24">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={loading}
-                className="w-full sm:w-auto flex-1 px-6 py-4 rounded-full bg-slate-800/50 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 backdrop-blur-sm transition-all disabled:opacity-50"
-                required
-              />
+            <p className="text-base md:text-lg text-slate-400 mb-10 leading-relaxed">
+              <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">ARCH</span> guides you through system design like a mentor would, asking the right questions, comparing architectures, and teaching you the "why" behind every decision. Ship smarter systems, faster.
+            </p>
+
+            {!submitted ? (
+              <form id="waitlist" onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-start gap-3 scroll-mt-24">
+                <input
+                  type="email"
+                  placeholder="Enter your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={loading}
+                  className="w-full sm:flex-1 px-6 py-4 rounded-full bg-slate-800/50 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 backdrop-blur-sm transition-all disabled:opacity-50"
+                  required
+                />
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-slate-900 font-bold hover:bg-slate-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full sm:w-auto px-8 py-4 rounded-full bg-indigo-600 text-white font-semibold hover:bg-indigo-500 transition-all flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-indigo-500/25"
               >
                 {loading ? (
                   <>
@@ -120,44 +123,45 @@ export default function Hero() {
                 )}
               </button>
             </form>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="flex items-center justify-center gap-2 mb-20 text-green-400 bg-green-500/10 px-8 py-4 rounded-full border border-green-500/20 w-fit mx-auto"
-            >
-              <Check size={20} />
-              <span className="font-semibold">You've been added to the waitlist!</span>
-            </motion.div>
-          )}
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="flex items-center gap-2 text-green-400 bg-green-500/10 px-8 py-4 rounded-full border border-green-500/20 w-fit"
+              >
+                <Check size={20} />
+                <span className="font-semibold">You've been added to the waitlist!</span>
+              </motion.div>
+            )}
 
-          {error && (
-            <p className="text-red-400 text-sm mb-4">{error}</p>
-          )}
-        </motion.div>
+            {error && (
+              <p className="text-red-400 text-sm mt-4">{error}</p>
+            )}
+          </motion.div>
 
-        {/* Hero Image / Dashboard Preview */}
-        <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative w-full max-w-5xl mx-auto mt-8"
-        >
-          {/* Multiple glow layers for depth (like OpenMemory) */}
-          <div className="absolute -inset-x-20 -inset-y-10 bg-gradient-to-r from-indigo-500/30 via-purple-500/30 to-indigo-500/30 blur-3xl -z-10 opacity-60"></div>
-          <div className="absolute -inset-x-10 -bottom-20 h-40 bg-gradient-to-t from-indigo-600/40 via-purple-600/20 to-transparent blur-2xl -z-10"></div>
-          
-          <div className="relative rounded-xl overflow-hidden border border-slate-800/50 shadow-[0_0_80px_rgba(99,102,241,0.3)] bg-slate-900">
-            <img
-              src="https://res.cloudinary.com/kaytech2/image/upload/v1765497725/dashboard-preview_dwsmsx.png"
-              alt="ARCH Dashboard Preview"
-              className="w-full h-auto block object-cover"
-              loading="lazy"
-            />
-            {/* Subtle overlay for depth */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 to-transparent pointer-events-none"></div>
-          </div>
-        </motion.div>
+          {/* Right Column - Dashboard Preview */}
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative"
+          >
+            {/* Multiple glow layers for depth */}
+            <div className="absolute -inset-x-20 -inset-y-10 bg-gradient-to-r from-indigo-500/30 via-purple-500/30 to-indigo-500/30 blur-3xl -z-10 opacity-60"></div>
+            <div className="absolute -inset-x-10 -bottom-20 h-40 bg-gradient-to-t from-indigo-600/40 via-purple-600/20 to-transparent blur-2xl -z-10"></div>
+            
+            <div className="relative rounded-xl overflow-hidden border border-slate-800/50 shadow-[0_0_80px_rgba(99,102,241,0.3)] bg-slate-900">
+              <img
+                src="https://res.cloudinary.com/kaytech2/image/upload/v1765497725/dashboard-preview_dwsmsx.png"
+                alt="ARCH Dashboard Preview"
+                className="w-full h-auto block object-cover"
+                loading="lazy"
+              />
+              {/* Subtle overlay for depth */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 to-transparent pointer-events-none"></div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
