@@ -78,51 +78,49 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="text-left"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/30 mb-8 backdrop-blur-sm">
-              <span className="flex h-2 w-2 rounded-full bg-orange-400 animate-pulse"></span>
-              <span className="text-xs font-medium text-orange-200">Limited Beta: First 100 engineers get lifetime access</span>
-            </div>
-
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
-              Design systems that scale,<br />
+              Senior engineers don't ship faster.<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
-                without the guesswork.
+                They decide better.
               </span>
             </h1>
 
             <p className="text-base md:text-lg text-slate-400 mb-10 leading-relaxed">
-              <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">ARCH</span> guides you through system design like a mentor would, asking the right questions, comparing architectures, and teaching you the "why" behind every decision. Ship smarter systems, faster.
+              <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">ARCH</span> is an AI thinking partner that helps you make better architecture decisions, message ordering, scaling trade-offs, migration paths before code becomes constraint.
             </p>
 
             {!submitted ? (
-              <form id="waitlist" onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-start gap-3 scroll-mt-24">
-                <input
-                  type="email"
-                  placeholder="Enter your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  disabled={loading}
-                  className="w-full sm:flex-1 px-6 py-4 rounded-full bg-slate-800/50 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 backdrop-blur-sm transition-all disabled:opacity-50"
-                  required
-                />
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full sm:w-auto px-8 py-4 rounded-full bg-indigo-600 text-white font-semibold hover:bg-indigo-500 transition-all flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-indigo-500/25"
-              >
-                {loading ? (
-                  <>
-                    <Loader2 size={18} className="animate-spin" />
-                    Joining...
-                  </>
-                ) : (
-                  <>
-                    Join Waitlist
-                    <ArrowRight size={18} />
-                  </>
-                )}
-              </button>
-            </form>
+              <>
+                <p className="text-sm text-slate-500 mb-4">Join 100+ engineers on the waitlist</p>
+                <form id="waitlist" onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-start gap-3 scroll-mt-24">
+                  <input
+                    type="email"
+                    placeholder="Enter your email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={loading}
+                    className="w-full sm:flex-1 px-6 py-4 rounded-full bg-slate-800/50 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 backdrop-blur-sm transition-all disabled:opacity-50"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full sm:w-auto px-8 py-4 rounded-full bg-indigo-600 text-white font-semibold hover:bg-indigo-500 transition-all flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-indigo-500/25"
+                  >
+                    {loading ? (
+                      <>
+                        <Loader2 size={18} className="animate-spin" />
+                        Joining...
+                      </>
+                    ) : (
+                      <>
+                        Join Waitlist
+                        <ArrowRight size={18} />
+                      </>
+                    )}
+                  </button>
+                </form>
+              </>
             ) : (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}

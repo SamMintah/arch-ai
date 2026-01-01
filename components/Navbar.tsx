@@ -59,7 +59,6 @@ export default function Navbar({ onSignIn }: NavbarProps) {
           <a href="#problem" onClick={(e) => handleLinkClick(e, 'problem')} className="text-sm font-medium text-slate-400 hover:text-white transition-colors">The Problem</a>
           <a href="#how-it-works" onClick={(e) => handleLinkClick(e, 'how-it-works')} className="text-sm font-medium text-slate-400 hover:text-white transition-colors">How it Works</a>
           <a href="#features" onClick={(e) => handleLinkClick(e, 'features')} className="text-sm font-medium text-slate-400 hover:text-white transition-colors">Features</a>
-          <a href="#pricing" onClick={(e) => handleLinkClick(e, 'pricing')} className="text-sm font-medium text-slate-400 hover:text-white transition-colors">Pricing</a>
           <button 
             onClick={() => scrollToId('waitlist')}
             className="px-5 py-2.5 rounded-full bg-indigo-600 text-white hover:bg-indigo-500 text-sm font-semibold transition-all shadow-lg shadow-indigo-500/25"
@@ -90,7 +89,6 @@ export default function Navbar({ onSignIn }: NavbarProps) {
               <a href="#problem" onClick={(e) => handleLinkClick(e, 'problem')} className="text-base font-medium text-slate-400 hover:text-white">The Problem</a>
               <a href="#how-it-works" onClick={(e) => handleLinkClick(e, 'how-it-works')} className="text-base font-medium text-slate-400 hover:text-white">How it Works</a>
               <a href="#features" onClick={(e) => handleLinkClick(e, 'features')} className="text-base font-medium text-slate-400 hover:text-white">Features</a>
-              <a href="#pricing" onClick={(e) => handleLinkClick(e, 'pricing')} className="text-base font-medium text-slate-400 hover:text-white">Pricing</a>
               <div className="h-px bg-slate-800 my-2"></div>
               <button 
                 onClick={() => scrollToId('waitlist')}
