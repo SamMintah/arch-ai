@@ -1,8 +1,36 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Play } from 'lucide-react';
 
 export default function DemoVideo() {
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Try to play when video is in view
+                        video.play().catch((error) => {
+                            console.log('Autoplay prevented:', error);
+                        });
+                    } else {
+                        video.pause();
+                    }
+                });
+            },
+            { threshold: 0.5 }
+        );
+
+        observer.observe(video);
+
+        return () => {
+            observer.disconnect();
+        };
+    }, []);
+
     return (
         <section id="demo" className="py-24 bg-[#030303] relative overflow-hidden scroll-mt-24">
             <div className="max-w-7xl mx-auto px-6">
@@ -38,12 +66,14 @@ export default function DemoVideo() {
                     <div className="relative rounded-2xl overflow-hidden border border-[#1F1F23] shadow-[0_0_15px_rgba(16,185,129,0.2)] bg-[#111114]">
                         <div className="aspect-video bg-[#0A0A0B]">
                             <video
+                                ref={videoRef}
                                 className="w-full h-full object-cover"
                                 autoPlay
                                 loop
                                 muted
                                 playsInline
                                 controls
+                                preload="metadata"
                             >
                                 <source src="https://res.cloudinary.com/kaytech2/video/upload/v1767713259/arch_online-video-cutter.com_hiaswd.mp4" type="video/mp4" />
                                 Your browser does not support the video tag.
