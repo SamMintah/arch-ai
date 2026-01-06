@@ -22,7 +22,7 @@ export default function Problem() {
   ];
 
   return (
-    <section id="problem" className="py-24 bg-surface relative overflow-hidden scroll-mt-24">
+    <section id="problem" className="py-24 bg-[#0A0A0B] relative overflow-hidden scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
         
         {/* Text on the right (but first on mobile) */}
@@ -39,7 +39,7 @@ export default function Problem() {
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
             The gap between <br/>
             <span className="text-slate-400">"I can code"</span> and <br/>
-            <span className="text-indigo-400">"I can architect"</span>.
+            <span className="text-emerald-400">"I can architect"</span>.
           </h2>
           <p className="text-lg text-slate-400 mb-8 leading-relaxed">
             Most engineers get stuck in the implementation details. Moving to senior levels requires a shift in thinking from functions and classes to systems, scalability, and reliability.
@@ -48,7 +48,7 @@ export default function Problem() {
           <div className="space-y-6">
             {problems.map((item, idx) => (
               <div key={idx} className="flex gap-4 items-start">
-                <div className="mt-1 p-2 rounded-lg bg-slate-800/50 border border-slate-700">
+                <div className="mt-1 p-2 rounded-lg bg-[#111114] border border-[#1F1F23]">
                   {item.icon}
                 </div>
                 <div>
@@ -69,7 +69,7 @@ export default function Problem() {
           className="relative lg:order-1"
         >
           {/* Abstract Messy Architecture Visual */}
-          <div className="aspect-square relative bg-slate-950 rounded-2xl border border-slate-800 p-8 flex items-center justify-center overflow-hidden">
+          <div className="aspect-square relative bg-[#030303] rounded-2xl border border-[#1F1F23] p-8 flex items-center justify-center overflow-hidden">
              {/* Background Grid */}
              <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
              
@@ -81,8 +81,8 @@ export default function Problem() {
              </svg>
 
              {/* Confused Engineer Card */}
-             <div className="relative z-10 bg-slate-900 border border-slate-700 rounded-xl p-6 shadow-2xl max-w-xs w-full text-center">
-                <div className="w-16 h-16 bg-slate-800 rounded-full mx-auto mb-4 flex items-center justify-center border border-slate-600">
+             <div className="relative z-10 bg-[#0A0A0B] border border-[#1F1F23] rounded-xl p-6 shadow-2xl max-w-xs w-full text-center">
+                <div className="w-16 h-16 bg-[#111114] rounded-full mx-auto mb-4 flex items-center justify-center border border-[#1F1F23]">
                     <span className="text-3xl">🤔</span>
                 </div>
                 <h4 className="text-white font-bold mb-2">Analysis Paralysis</h4>
@@ -90,8 +90,8 @@ export default function Problem() {
                   "Should I use NoSQL? Is Microservices overkill? How do I handle race conditions?"
                 </p>
                 <div className="mt-4 flex gap-2 justify-center">
-                    <div className="h-2 w-12 bg-slate-700 rounded-full"></div>
-                    <div className="h-2 w-8 bg-slate-700 rounded-full"></div>
+                    <div className="h-2 w-12 bg-[#1F1F23] rounded-full"></div>
+                    <div className="h-2 w-8 bg-[#1F1F23] rounded-full"></div>
                 </div>
              </div>
              

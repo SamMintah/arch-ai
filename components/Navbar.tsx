@@ -42,13 +42,13 @@ export default function Navbar({ onSignIn }: NavbarProps) {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled || mobileMenuOpen
-          ? 'bg-background/80 backdrop-blur-md border-b border-slate-800'
+          ? 'bg-[#030303]/80 backdrop-blur-md border-b border-[#1F1F23]'
           : 'bg-transparent border-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white">
+          <div className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white">
             <Cpu size={20} />
           </div>
           <span className="font-bold text-xl tracking-tight text-white">arch</span>
@@ -57,11 +57,11 @@ export default function Navbar({ onSignIn }: NavbarProps) {
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
           <a href="#problem" onClick={(e) => handleLinkClick(e, 'problem')} className="text-sm font-medium text-slate-400 hover:text-white transition-colors">The Problem</a>
-          <a href="#how-it-works" onClick={(e) => handleLinkClick(e, 'how-it-works')} className="text-sm font-medium text-slate-400 hover:text-white transition-colors">How it Works</a>
+          <a href="#demo" onClick={(e) => handleLinkClick(e, 'demo')} className="text-sm font-medium text-slate-400 hover:text-white transition-colors">Demo</a>
           <a href="#features" onClick={(e) => handleLinkClick(e, 'features')} className="text-sm font-medium text-slate-400 hover:text-white transition-colors">Features</a>
           <button 
             onClick={() => scrollToId('waitlist')}
-            className="px-5 py-2.5 rounded-full bg-indigo-600 text-white hover:bg-indigo-500 text-sm font-semibold transition-all shadow-lg shadow-indigo-500/25"
+            className="px-5 py-2.5 rounded-full bg-emerald-600 text-white hover:bg-emerald-500 text-sm font-semibold transition-all shadow-lg shadow-emerald-500/25"
           >
             Join Waitlist
           </button>
@@ -83,16 +83,16 @@ export default function Navbar({ onSignIn }: NavbarProps) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background border-b border-slate-800 overflow-hidden"
+            className="md:hidden bg-[#030303] border-b border-[#1F1F23] overflow-hidden"
           >
             <div className="flex flex-col p-6 gap-4">
               <a href="#problem" onClick={(e) => handleLinkClick(e, 'problem')} className="text-base font-medium text-slate-400 hover:text-white">The Problem</a>
-              <a href="#how-it-works" onClick={(e) => handleLinkClick(e, 'how-it-works')} className="text-base font-medium text-slate-400 hover:text-white">How it Works</a>
+              <a href="#demo" onClick={(e) => handleLinkClick(e, 'demo')} className="text-base font-medium text-slate-400 hover:text-white">Demo</a>
               <a href="#features" onClick={(e) => handleLinkClick(e, 'features')} className="text-base font-medium text-slate-400 hover:text-white">Features</a>
-              <div className="h-px bg-slate-800 my-2"></div>
+              <div className="h-px bg-[#1F1F23] my-2"></div>
               <button 
                 onClick={() => scrollToId('waitlist')}
-                className="w-full py-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold"
+                className="w-full py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold"
               >
                 Join Waitlist
               </button>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Problem from './components/Problem';
-import HowItWorks from './components/HowItWorks';
+import DemoVideo from './components/DemoVideo';
 import Features from './components/Features';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
@@ -23,12 +23,12 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-slate-200 selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-[#030303] text-slate-200 selection:bg-emerald-500/30">
       <Navbar onSignIn={() => setView('auth')} />
       <main>
         <Hero />
         <Problem />
-        <HowItWorks />
+        <DemoVideo />
         <Features />
         <CTA />
       </main>
