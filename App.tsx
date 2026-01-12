@@ -7,6 +7,7 @@ import Features from './components/Features';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import AuthPage from './components/AuthPage';
+import BackgroundFlowAnimation from './components/BackgroundFlowAnimation';
 
 export default function App() {
   const [mounted, setMounted] = useState(false);
@@ -23,16 +24,19 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#030303] text-slate-200 selection:bg-emerald-500/30">
-      <Navbar onSignIn={() => setView('auth')} />
-      <main>
-        <Hero />
-        <Problem />
-        <DemoVideo />
-        <Features />
-        <CTA />
-      </main>
-      <Footer />
+    <div className="relative min-h-screen bg-[#030303] text-slate-200 selection:bg-emerald-500/30">
+      <BackgroundFlowAnimation />
+      <div className="relative z-10">
+        <Navbar onSignIn={() => setView('auth')} />
+        <main>
+          <Hero />
+          <Problem />
+          <DemoVideo />
+          <Features />
+          <CTA />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }

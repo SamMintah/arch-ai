@@ -32,7 +32,7 @@ export default function DemoVideo() {
     }, []);
 
     return (
-        <section id="demo" className="py-24 bg-[#030303] relative overflow-hidden scroll-mt-24">
+        <section id="demo" className="py-24 relative overflow-hidden scroll-mt-24">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="text-center mb-12">
                     <motion.div
