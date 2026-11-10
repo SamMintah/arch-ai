@@ -53,6 +53,7 @@ const steps = [
 
 interface CardProps {
     i: number;
+    key?: React.Key;
     id: number;
     title: string;
     desc: string;

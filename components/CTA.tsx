@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Mail, Check, Loader2 } from 'lucide-react';
+import { ArrowRight, Mail, Check, Loader2 } from 'lucide-react';
 
 export default function CTA() {
   const [email, setEmail] = useState('');
@@ -49,77 +48,62 @@ export default function CTA() {
   };
 
   return (
-    <section id="waitlist" className="py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-emerald-950/20 -z-10"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)] -z-10"></div>
-        
+    <section id="waitlist" className="border-t border-line py-24 md:py-32 scroll-mt-24">
         <div className="max-w-4xl mx-auto px-6 text-center">
-            <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="p-1"
-            >
-                <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-                    Join the <span className="text-emerald-400">ARCH</span> Waitlist
-                </h2>
-                <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
-                    We're currently in private beta. Sign up to get early access and start mastering system design.
-                </p>
-                
-                {!submitted ? (
-                    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto relative z-10">
-                        <div className="relative flex-1">
-                            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-                            <input 
-                                type="email" 
-                                placeholder="Enter your email address" 
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                disabled={loading}
-                                className="w-full bg-[#0A0A0B]/80 border border-[#1F1F23] rounded-full py-4 pl-12 pr-6 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent backdrop-blur-sm transition-all disabled:opacity-50"
-                                required
-                            />
-                        </div>
-                        <button 
-                            type="submit"
+            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-medium tracking-[-0.02em] leading-[1.1] text-ink mb-5">
+                Join the ARCH waitlist
+            </h2>
+            <p className="text-lg leading-[1.7] text-ink-muted mb-9 max-w-2xl mx-auto">
+                We're currently in private beta. Sign up to get early access and start mastering system design.
+            </p>
+            
+            {!submitted ? (
+                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+                    <div className="relative flex-1">
+                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-ink-muted" size={18} />
+                        <label htmlFor="cta-email" className="sr-only">Email address</label>
+                        <input 
+                            id="cta-email"
+                            type="email" 
+                            placeholder="Enter your email address" 
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             disabled={loading}
-                            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-bold text-white bg-emerald-600 rounded-full overflow-hidden transition-transform hover:scale-105 hover:bg-emerald-500 focus:outline-none ring-offset-2 ring-emerald-500 whitespace-nowrap shadow-lg shadow-emerald-500/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-                        >
-                            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></span>
-                            {loading ? (
-                                <>
-                                    <Loader2 size={20} className="animate-spin" />
-                                    <span>Joining...</span>
-                                </>
-                            ) : (
-                                <>
-                                    <span>Join Waitlist</span>
-                                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                                </>
-                            )}
-                        </button>
-                    </form>
-                ) : (
-                     <motion.div 
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="flex flex-col items-center justify-center p-8 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl max-w-md mx-auto"
+                            className="w-full h-14 bg-surface border border-line rounded-[10px] pl-11 pr-4 text-ink placeholder:text-ink-muted focus:border-accent transition-colors disabled:opacity-60"
+                            required
+                        />
+                    </div>
+                    <button 
+                        type="submit"
+                        disabled={loading}
+                        className="inline-flex items-center justify-center gap-2 h-14 px-6 text-[19px] leading-none font-bold text-white bg-accent rounded-[10px] hover:bg-accent-hover transition-colors whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                        <div className="w-12 h-12 bg-emerald-500/20 rounded-full flex items-center justify-center mb-4">
-                            <Check size={24} className="text-emerald-400" />
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-2">You're on the list!</h3>
-                        <p className="text-slate-400">We'll notify you as soon as spots open up.</p>
-                    </motion.div>
-                )}
-                
-                {error && (
-                    <p className="text-red-400 text-sm mt-4">{error}</p>
-                )}
-                
-                {!submitted && <p className="mt-6 text-slate-500 text-sm">Join 2,000+ engineers waiting for access.</p>}
-            </motion.div>
+                        {loading ? (
+                            <>
+                                <Loader2 size={18} className="animate-spin" />
+                                <span>Joining...</span>
+                            </>
+                        ) : (
+                            <>
+                                <span>Join waitlist</span>
+                                <ArrowRight size={18} />
+                            </>
+                        )}
+                    </button>
+                </form>
+            ) : (
+                <div role="status" aria-live="polite" className="flex flex-col items-center justify-center p-8 bg-surface border border-line rounded-xl max-w-md mx-auto">
+                    <div className="w-11 h-11 bg-surface-alt rounded-full flex items-center justify-center mb-4">
+                        <Check size={22} className="text-accent" />
+                    </div>
+                    <h3 className="font-display text-2xl font-medium text-ink mb-2">You're on the list.</h3>
+                    <p className="text-ink-muted">We'll notify you as soon as spots open up.</p>
+                </div>
+            )}
+            
+            {error && (
+                <p role="alert" className="text-[15px] mt-4 text-accent-ink">{error}</p>
+            )}
         </div>
     </section>
   );

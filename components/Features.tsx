@@ -1,89 +1,86 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { BrainCircuit, FileJson, GitBranch, Layout, GraduationCap, Save } from 'lucide-react';
 
 const features = [
   {
-    icon: <BrainCircuit size={24} />,
-    title: "Socratic Questioning",
+    icon: <BrainCircuit size={22} />,
+    title: "Socratic questioning",
     desc: "ARCH doesn't just give answers. It challenges your assumptions to deepen your understanding."
   },
   {
-    icon: <FileJson size={24} />,
-    title: "PRD Generation",
+    icon: <FileJson size={22} />,
+    title: "PRD generation",
     desc: "Automatically format your thoughts into industry-standard Product Requirement Documents."
   },
   {
-    icon: <GitBranch size={24} />,
-    title: "Architecture Options",
-    desc: "Compare Monolith vs. Microservices vs. Serverless for your specific use case."
+    icon: <GitBranch size={22} />,
+    title: "Architecture options",
+    desc: "Compare monolith vs. microservices vs. serverless for your specific use case."
   },
   {
-    icon: <Layout size={24} />,
-    title: "System Diagrams",
+    icon: <Layout size={22} />,
+    title: "System diagrams",
     desc: "Export editable diagrams for your presentations and documentation."
   },
   {
-    icon: <GraduationCap size={24} />,
-    title: "Learning Roadmap",
+    icon: <GraduationCap size={22} />,
+    title: "Learning roadmap",
     desc: "Tasks are broken down by learning objectives, not just delivery milestones."
   },
   {
-    icon: <Save size={24} />,
-    title: "Project Persistence",
+    icon: <Save size={22} />,
+    title: "Project persistence",
     desc: "Save your progress, revisit past decisions, and iterate on your designs over time."
   }
 ];
 
+const spans = [
+  "lg:col-span-5",
+  "lg:col-span-4",
+  "lg:col-span-3",
+  "lg:col-span-4",
+  "lg:col-span-4",
+  "lg:col-span-4"
+];
+
 export default function Features() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 }
-  };
-
   return (
-    <section id="features" className="py-24 bg-[#0A0A0B] scroll-mt-24">
+    <section id="features" className="border-t border-line bg-surface-alt py-24 md:py-28 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Everything you need to grow</h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+        <div className="max-w-2xl">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium tracking-[-0.02em] leading-[1.1] text-ink">
+            Everything you need to grow
+          </h2>
+          <p className="mt-4 text-lg leading-[1.7] text-ink-muted max-w-[54ch]">
             A complete toolkit for mastering system design and software architecture.
           </p>
         </div>
 
-        <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
-          {features.map((feature, idx) => (
-            <motion.div 
-              key={idx} 
-              variants={item}
-              className="p-8 rounded-2xl bg-[#111114] border border-[#1F1F23] hover:border-emerald-500/50 transition-all hover:shadow-[0_0_15px_rgba(16,185,129,0.2)] group"
-            >
-              <div className="w-12 h-12 bg-[#0A0A0B] rounded-lg flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform duration-300 border border-[#1F1F23]">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">{feature.title}</h3>
-              <p className="text-slate-400 leading-relaxed">
-                {feature.desc}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-12 gap-5">
+          {features.map((feature, idx) => {
+            const featured = idx < 3;
+            return (
+              <article
+                key={idx}
+                className={`flex h-full flex-col rounded-xl border border-line bg-surface transition-colors hover:border-ink-muted ${
+                  featured ? 'p-7 sm:p-8' : 'p-6'
+                } ${spans[idx]}`}
+              >
+                <div
+                  className={`flex items-center justify-center rounded-[10px] bg-surface-alt border border-line mb-5 ${
+                    featured ? 'w-11 h-11' : 'w-10 h-10'
+                  } ${featured ? 'text-accent' : 'text-ink-muted'}`}
+                >
+                  {feature.icon}
+                </div>
+                <h3 className="font-display text-xl font-medium text-ink mb-2">{feature.title}</h3>
+                <p className={`leading-[1.65] text-ink-muted ${featured ? 'text-base' : 'text-[15px]'}`}>
+                  {feature.desc}
+                </p>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
