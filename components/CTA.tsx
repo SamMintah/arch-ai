@@ -18,8 +18,8 @@ export default function CTA() {
       const SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || '';
       
       if (!SCRIPT_URL) {
-        console.warn('Google Script URL not configured');
-        setSubmitted(true);
+        console.error('VITE_GOOGLE_SCRIPT_URL is not configured');
+        setError('The waitlist is temporarily unavailable. Please try again later.');
         setLoading(false);
         return;
       }

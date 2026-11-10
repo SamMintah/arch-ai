@@ -19,9 +19,8 @@ export default function Hero() {
       const SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || '';
 
       if (!SCRIPT_URL) {
-        console.warn('Google Script URL not configured');
-        // For demo purposes, still show success
-        setSubmitted(true);
+        console.error('VITE_GOOGLE_SCRIPT_URL is not configured');
+        setError('The waitlist is temporarily unavailable. Please try again later.');
         setLoading(false);
         return;
       }
@@ -59,10 +58,10 @@ export default function Hero() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-14 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-12 gap-14 lg:gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div className="hero-fade lg:col-span-7">
-            <h1 className="font-display text-[2.5rem] sm:text-5xl lg:text-[3.5rem] font-medium tracking-[-0.02em] leading-[1.1] text-ink">
+          <div className="hero-fade lg:col-span-6">
+            <h1 className="font-display text-[2.5rem] sm:text-5xl lg:text-[3.25rem] font-medium tracking-[-0.02em] leading-[1.1] text-ink">
               From idea to architecture <br className="hidden lg:block" /> in one conversation.
             </h1>
 
@@ -119,7 +118,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column - Cropped product moment */}
-          <div className="hero-fade lg:col-span-5" style={{ animationDelay: '100ms' }}>
+          <div className="hero-fade lg:col-span-6" style={{ animationDelay: '100ms' }}>
             <div className="relative overflow-hidden rounded-xl border border-line bg-surface shadow-[var(--shadow-soft)]">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
