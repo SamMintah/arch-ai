@@ -60,7 +60,7 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-14 lg:gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div className="hero-fade lg:col-span-6">
+          <div className="hero-fade lg:col-span-5">
             <h1 className="font-display text-[2.5rem] sm:text-5xl lg:text-[3.25rem] font-medium tracking-[-0.02em] leading-[1.1] text-ink">
               From idea to architecture <br className="hidden lg:block" /> in one conversation.
             </h1>
@@ -117,14 +117,14 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column - Cropped product moment */}
-          <div className="hero-fade lg:col-span-6" style={{ animationDelay: '100ms' }}>
-            <div className="relative overflow-hidden rounded-xl border border-line bg-surface shadow-[var(--shadow-soft)]">
-              <div className="aspect-[4/3] overflow-hidden">
+          {/* Right Column - Full product screenshot */}
+          <div className="hero-fade lg:col-span-7" style={{ animationDelay: '100ms' }}>
+            <div className="relative overflow-hidden rounded-xl border border-line bg-surface shadow-[var(--shadow-frame)]">
+              <div className="aspect-[1712/987] overflow-hidden">
                 <img
-                  src="https://res.cloudinary.com/kaytech2/image/upload/v1767697274/Screenshot_2026-01-06_at_10.59.34_AM_ro8qqj.png"
+                  src="https://res.cloudinary.com/kaytech2/image/upload/v1794316102/arch-demo-poster_pzu0r9.png"
                   alt="ARCH comparing architecture proposals side by side"
-                  className="h-full w-full object-cover object-left-top origin-top-left scale-150"
+                  className="h-full w-full object-contain"
                   loading="eager"
                 />
               </div>
